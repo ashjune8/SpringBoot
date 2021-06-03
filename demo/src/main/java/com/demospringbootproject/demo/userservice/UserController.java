@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import javax.validation.Valid;
 
+import com.demospringbootproject.demo.configuration.Configuration;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,10 +24,21 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private Configuration configuration;
+
     @GetMapping(path = "/getUsers")
     public ArrayList<UserBean> getAllUsers(){
 
         return this.userService.getAllUsers();
+
+
+    }
+    @GetMapping(path = "/getConfig")
+    public int getConfig(){
+
+        return this.configuration.getRandomValue();
+
 
 
     }
