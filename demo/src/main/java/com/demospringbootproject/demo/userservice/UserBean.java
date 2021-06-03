@@ -1,8 +1,12 @@
 package com.demospringbootproject.demo.userservice;
 
+import javax.validation.constraints.Size;
+
 public class UserBean {
 
     private Integer id;
+
+    @Size(min=2)
     private String name;
 
 

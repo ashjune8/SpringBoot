@@ -3,6 +3,8 @@ package com.demospringbootproject.demo.userservice;
 import java.net.URI;
 import java.util.ArrayList;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +45,7 @@ public class UserController {
 
 
     @PostMapping("/createUser")
-    public ResponseEntity<Object> createUser(@RequestBody UserBean user){
+    public ResponseEntity<Object> createUser(@Valid @RequestBody UserBean user){
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
         return ResponseEntity.created(location).build();
         
